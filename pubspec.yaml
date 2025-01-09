@@ -1,7 +1,7 @@
-name: design_system
-description: "A new Flutter project."
+name: flooding_app_design_system
+description: "flooding_app_design_system."
 version: 0.0.1
-homepage:
+repository: https://github.com/flooding-kr/flooding-app-designSystemLibrary
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
@@ -25,23 +25,23 @@ flutter:
   fonts:
     - family: Pretendard
       fonts:
-        - asset: fonts/pretendard_black.otf
+        - asset: assets/fonts/pretendard_black.otf
           weight: 900
-        - asset: fonts/pretendard_bold.otf
+        - asset: assets/fonts/pretendard_bold.otf
           weight: 700
-        - asset: fonts/pretendard_extrabold.otf
+        - asset: assets/fonts/pretendard_extrabold.otf
           weight: 800
-        - asset: fonts/pretendard_extralight.otf
+        - asset: assets/fonts/pretendard_extralight.otf
           weight: 200
-        - asset: fonts/pretendard_light.otf
+        - asset: assets/fonts/pretendard_light.otf
           weight: 300
-        - asset: fonts/pretendard_medium.otf
+        - asset: assets/fonts/pretendard_medium.otf
           weight: 500
-        - asset: fonts/pretendard_regular.otf
+        - asset: assets/fonts/pretendard_regular.otf
           weight: 400
-        - asset: fonts/pretendard_semibold.otf
+        - asset: assets/fonts/pretendard_semibold.otf
           weight: 600
-        - asset: fonts/pretendard_thin.otf
+        - asset: assets/fonts/pretendard_thin.otf
           weight: 100
 
   # To add assets to your package, add an assets section, like this:

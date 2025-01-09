@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ExpoTypography {
+class FloodingTypography {
   static const _fontFamilyPretendard = 'Pretendard';
 
   // Title 1

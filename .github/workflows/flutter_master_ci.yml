@@ -49,7 +49,7 @@ jobs:
         run: flutter packages pub publish --dry-run
 
       - name: Publish Package
-        run: flutter packages pub publish
+        run: flutter packages pub publish -f
 
       - name: Set timestamp
         id: timestamp

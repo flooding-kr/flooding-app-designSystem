@@ -1,9 +1,9 @@
-name: Flutter CI
+name: Flutter Develop CI
 
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
 
 jobs:
@@ -14,11 +14,6 @@ jobs:
 
       - name: Checkout Flutter repository
         uses: actions/checkout@v4
-
-      - name: Copy Secret To application module .env
-        run: echo "API_URL=$MAP_API_KEY" >> .env
-        env:
-          MAP_API_KEY: ${{ secrets.API_URL }}
 
       - name: Setup Java
         uses: actions/setup-java@v3.12.0
@@ -41,7 +36,7 @@ jobs:
       - name: Analyze project source
         run: flutter analyze
 
-      - name: Test
+      - name: Test Package
         run: flutter packages pub publish --dry-run
 
       - name: Set timestamp

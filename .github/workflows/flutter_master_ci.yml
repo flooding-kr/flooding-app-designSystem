@@ -46,10 +46,10 @@ jobs:
           sh ./pub_login.sh 
 
       - name: Test Package
-        run: flutter packages pub publish --dry-run
+        run: pub publish --dry-run
 
       - name: Publish Package
-        run: flutter packages pub publish -f
+        run: pub publish -f
 
       - name: Set timestamp
         id: timestamp

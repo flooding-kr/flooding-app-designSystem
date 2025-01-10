@@ -1,6 +1,6 @@
 name: flooding_app_design_system
 description: "flooding_app_design_system."
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/flooding-kr/flooding-app-designSystemLibrary
 
 environment:

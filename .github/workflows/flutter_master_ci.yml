@@ -1,7 +1,7 @@
 name: Flutter Master CI
 
 on:
-  push:
+  release:
     branches:
       - master
 

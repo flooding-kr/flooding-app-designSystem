@@ -1,7 +1,7 @@
 name: Flutter Master CI
 
 on:
-  push:
+  release:
     branches:
       - master
 
@@ -40,13 +40,11 @@ jobs:
           mkdir -p ~/.pub-cache
           echo "${{ secrets.PUB_CREDENTIALS }}" > ~/.pub-cache/credentials.json
 
-      - name: Publish Package
-        uses: sakebook/actions-flutter-pub-publisher@v1.4.1
+      - name: Publish
+        uses: k-paxian/dart-package-publisher@v1.5.1
         with:
-          credential: ${{ secrets.CREDENTIAL_JSON }}
-          flutter_package: true
-          skip_test: true
-          dry_run: false
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          flutter: true
 
       - name: Set timestamp
         id: timestamp

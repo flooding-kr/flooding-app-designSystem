@@ -40,11 +40,13 @@ jobs:
           mkdir -p ~/.pub-cache
           echo "${{ secrets.PUB_CREDENTIALS }}" > ~/.pub-cache/credentials.json
 
-      - name: Test Package
-        run: flutter pub publish --dry-run
-
       - name: Publish Package
-        run: flutter pub publish -f
+        uses: sakebook/actions-flutter-pub-publisher@v1.4.1
+        with:
+          credential: ${{ secrets.CREDENTIAL_JSON }}
+          flutter_package: true
+          skip_test: true
+          dry_run: false
 
       - name: Set timestamp
         id: timestamp

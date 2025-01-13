@@ -35,11 +35,6 @@ jobs:
       - name: Analyze project source
         run: flutter analyze
 
-      - name: Setup Pub Credentials
-        run: |
-          mkdir -p ~/.pub-cache
-          echo "${{ secrets.PUB_CREDENTIALS }}" > ~/.pub-cache/credentials.json
-
       - name: Publish
         uses: k-paxian/dart-package-publisher@v1.5.1
         with:
@@ -50,8 +45,8 @@ jobs:
         id: timestamp
         run: echo "TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
 
-      - name: Notify Success for Push
-        if: github.event_name == 'push' && success()
+      - name: Notify Success for Release
+        if: success()
         env:
           TIMESTAMP: ${{ env.TIMESTAMP }}
           SUCCESS_FLUTTER_IMAGE: ${{ secrets.SUCCESS_FLUTTER_IMAGE }}
@@ -99,56 +94,7 @@ jobs:
           EOF
           )
           curl -X POST -H 'Content-type:application/json' -d "$DATA" "${{ secrets.DISCORD_WEBHOOK_URL }}"
-
-      - name: Notify Success for PR
-        if: github.event_name == 'pull_request' && success()
-        env:
-          TIMESTAMP: ${{ env.TIMESTAMP }}
-          SUCCESS_FLUTTER_IMAGE: ${{ secrets.SUCCESS_FLUTTER_IMAGE }}
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: |
-          DATA=$(cat <<EOF
-          {
-            "embeds": [
-              {
-                "title": "패키지 배포 성공 :)",
-                "description": "** Pull Request **\n> [${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }})\n",
-                "color": 46335,
-                "timestamp": "${{ env.TIMESTAMP }}",
-                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-                "author": {
-                  "name": "${{ github.event.sender.login }}",
-                  "url": "${{ github.event.sender.html_url }}"
-                },
-                "thumbnail": {
-                  "url": "${{ github.event.sender.avatar_url }}"
-                },
-                "image": {
-                  "url": "${{ secrets.SUCCESS_FLUTTER_IMAGE }}"
-                },
-                "fields": [
-                  {
-                    "name": "Repository",
-                    "value": "> [${{ github.repository }}](https://github.com/${{ github.repository }})\n"
-                  },
-                  {
-                    "name": "Branch",
-                    "value": "> [${{ github.ref }}](https://github.com/${{ github.repository }}/tree/${{ github.ref_name }})",
-                    "inline": false
-                  },
-                  {
-                    "name": "Workflow",
-                    "value": "> [CI](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
-                    "inline": false
-                  }
-                ]
-              }
-            ]
-          }
-          EOF
-          )
-          curl -X POST -H 'Content-type:application/json' -d "$DATA" "${{ secrets.DISCORD_WEBHOOK_URL }}"
-
+     
       - name: Notify Failure
         if: failure()
         env:

@@ -1,4 +1,3 @@
-library flooding_app_design_system;
+library;
 
 export 'src/typography.dart';
-

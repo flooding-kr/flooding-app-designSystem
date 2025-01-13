@@ -36,10 +36,11 @@ jobs:
         run: flutter analyze
 
       - name: Publish
-        uses: k-paxian/dart-package-publisher@v1.5.1
+        uses: k-paxian/dart-package-publisher@v1.6
         with:
           credentialJson: ${{ secrets.CREDENTIAL_JSON }}
           flutter: true
+          skipTests: true
 
       - name: Set timestamp
         id: timestamp

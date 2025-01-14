@@ -2,6 +2,8 @@ name: Flutter Master CI
 
 on:
   release:
+    types:
+      - published
     branches:
       - master
 

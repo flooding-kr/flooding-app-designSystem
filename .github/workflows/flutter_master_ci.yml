@@ -2,6 +2,8 @@ name: Flutter Master CI
 
 on:
   release:
+    types:
+      - published
     branches:
       - master
 
@@ -36,7 +38,7 @@ jobs:
         run: flutter analyze
 
       - name: Publish
-        uses: k-paxian/dart-package-publisher@v1.5.1
+        uses: k-paxian/dart-package-publisher@master
         with:
           credentialJson: ${{ secrets.CREDENTIAL_JSON }}
           flutter: true

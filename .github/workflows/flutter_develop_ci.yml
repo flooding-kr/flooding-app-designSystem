@@ -42,7 +42,7 @@ jobs:
       - name: Set timestamp
         id: timestamp
         run: echo "TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
-
+        
       - name: Notify Success for Push
         if: github.event_name == 'push' && success()
         env:
@@ -52,6 +52,7 @@ jobs:
         run: |
           DATA=$(cat <<EOF
           {
+            "content": "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>", 
             "embeds": [
               {
                 "title": "CI 성공 :)",
@@ -102,6 +103,7 @@ jobs:
         run: |
           DATA=$(cat <<EOF
           {
+           "content": "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>", 
             "embeds": [
               {
                 "title": "CI 성공 :)",
@@ -151,6 +153,7 @@ jobs:
         run: |
           DATA=$(cat <<EOF
           {
+            "content": "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>", 
             "embeds": [
               {
                 "title": "CI 실패 :(",

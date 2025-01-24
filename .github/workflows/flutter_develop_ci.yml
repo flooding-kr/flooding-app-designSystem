@@ -42,6 +42,56 @@ jobs:
       - name: Set timestamp
         id: timestamp
         run: echo "TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
+      
+      - name: Notify PR creation
+        if: github.event_name == 'pull_request' && github.event.action == 'opened'
+        env:
+          TIMESTAMP: ${{ env.TIMESTAMP }}
+          SUCCESS_FLUTTER_IMAGE: ${{ secrets.SUCCESS_FLUTTER_IMAGE }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          DATA=$(cat <<EOF
+          {
+            "content": "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>", 
+            "embeds": [
+              {
+                "title": "PR 생성됨 :tada:",
+                "description": "** Pull Request **\n> [${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }})\n",
+                "color": 46335,
+                "timestamp": "${{ env.TIMESTAMP }}",
+                "url": "${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.pull_request.number }}",
+                "author": {
+                  "name": "${{ github.event.sender.login }}",
+                  "url": "${{ github.event.sender.html_url }}"
+                },
+                "thumbnail": {
+                  "url": "${{ github.event.sender.avatar_url }}"
+                },
+                "image": {
+                  "url": "${{ secrets.SUCCESS_FLUTTER_IMAGE }}"
+                },
+                "fields": [
+                  {
+                    "name": "Repository",
+                    "value": "> [${{ github.repository }}](https://github.com/${{ github.repository }})\n"
+                  },
+                  {
+                    "name": "Branch",
+                    "value": "> [${{ github.ref }}](https://github.com/${{ github.repository }}/tree/${{ github.ref_name }})",
+                    "inline": false
+                  },
+                  {
+                    "name": "Pull Request",
+                    "value": "> [${{ github.event.pull_request.title }}](https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }})",
+                    "inline": false
+                  }
+                ]
+              }
+            ]
+          }
+          EOF
+          )
+          curl -X POST -H 'Content-type:application/json' -d "$DATA" "${{ secrets.DISCORD_WEBHOOK_URL }}"
 
       - name: Notify Success for Push
         if: github.event_name == 'push' && success()

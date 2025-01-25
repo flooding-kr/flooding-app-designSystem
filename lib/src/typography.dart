@@ -26,7 +26,6 @@ class FloodingTypography {
     fontSize: 32,
     height: 1.2, // 120%
   );
-
   static const TextStyle title3Regular = TextStyle(
     fontFamily: _fontFamilyPretendard,
     fontWeight: FontWeight.w400, // Regular
@@ -41,7 +40,6 @@ class FloodingTypography {
     fontSize: 24,
     height: 1.2, // 120%
   );
-
   static const TextStyle body1Regular = TextStyle(
     fontFamily: _fontFamilyPretendard,
     fontWeight: FontWeight.w400, // Regular
@@ -56,7 +54,6 @@ class FloodingTypography {
     fontSize: 20,
     height: 1.2, // 120%
   );
-
   static const TextStyle body2Regular = TextStyle(
     fontFamily: _fontFamilyPretendard,
     fontWeight: FontWeight.w400, // Regular
@@ -71,7 +68,6 @@ class FloodingTypography {
     fontSize: 16,
     height: 1.4, // 140%
   );
-
   static const TextStyle body3Regular = TextStyle(
     fontFamily: _fontFamilyPretendard,
     fontWeight: FontWeight.w400, // Regular
@@ -86,7 +82,6 @@ class FloodingTypography {
     fontSize: 14,
     height: 1.4, // 140%
   );
-
   static const TextStyle caption1Regular = TextStyle(
     fontFamily: _fontFamilyPretendard,
     fontWeight: FontWeight.w400, // Regular
@@ -101,7 +96,6 @@ class FloodingTypography {
     fontSize: 12,
     height: 1.5, // 150%
   );
-
   static const TextStyle caption2Medium = TextStyle(
     fontFamily: _fontFamilyPretendard,
     fontWeight: FontWeight.w500, // Medium
@@ -116,7 +110,6 @@ class FloodingTypography {
     fontSize: 10,
     height: 1.8, // 180%
   );
-
   static const TextStyle caption3Medium = TextStyle(
     fontFamily: _fontFamilyPretendard,
     fontWeight: FontWeight.w500, // Medium

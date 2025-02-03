@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   flooding_app_design_system:
-    path: ../../flooding-app-designSystemLibrary
+    path: ../
 
 dev_dependencies:
   flutter_test:

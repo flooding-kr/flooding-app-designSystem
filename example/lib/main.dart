@@ -86,9 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: FloodingTypography.body1SemiBold
                     .copyWith(color: FloodingColor.white),
               ),
-              onTap: () {
-                print('신청 했습니다');
-              },
+              onTap: () {},
             ),
           ],
         ),

@@ -5,6 +5,8 @@ class FloodingButton extends StatelessWidget {
   final double width;
   final double height;
   final Widget child;
+  final Color color;
+  final BorderRadius borderRadius;
   final VoidCallback onTap;
 
   const FloodingButton({
@@ -13,28 +15,25 @@ class FloodingButton extends StatelessWidget {
     required this.height,
     required this.child,
     required this.onTap,
+    this.color = FloodingColor.main600,
+    this.borderRadius = const BorderRadius.all(
+      Radius.circular(8),
+    ),
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.all(
-        Radius.circular(8),
-      ),
+    return GestureDetector(
       onTap: onTap,
-      child: Ink(
+      child: Container(
+        alignment: Alignment.center,
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: FloodingColor.main600,
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
+          color: color,
+          borderRadius: borderRadius,
         ),
-        child: Container(
-          alignment: Alignment.center,
-          child: child,
-        ),
+        child: child,
       ),
     );
   }

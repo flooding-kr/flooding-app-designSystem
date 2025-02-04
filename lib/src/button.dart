@@ -1,24 +1,30 @@
 import 'package:flooding_app_design_system/src/color.dart';
 import 'package:flutter/material.dart';
 
+import '../flooding_app_design_system.dart';
+
 class FloodingButton extends StatelessWidget {
   final double width;
   final double height;
-  final Widget child;
+  final String text;
+  final VoidCallback onTap;
   final Color color;
   final BorderRadius borderRadius;
-  final VoidCallback onTap;
+  final TextStyle textStyle;
+  final Color textColor;
 
   const FloodingButton({
     super.key,
     required this.width,
     required this.height,
-    required this.child,
+    required this.text,
     required this.onTap,
     this.color = FloodingColor.main600,
     this.borderRadius = const BorderRadius.all(
       Radius.circular(8),
     ),
+    this.textStyle = FloodingTypography.body1SemiBold,
+    this.textColor = FloodingColor.white,
   });
 
   @override
@@ -33,7 +39,12 @@ class FloodingButton extends StatelessWidget {
           color: color,
           borderRadius: borderRadius,
         ),
-        child: child,
+        child: Text(
+          text,
+          style: textStyle.copyWith(
+            color: textColor,
+          ),
+        ),
       ),
     );
   }

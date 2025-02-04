@@ -81,11 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
             FloodingButton(
               width: 898,
               height: 61,
-              child: Text(
-                '신청',
-                style: FloodingTypography.body1SemiBold
-                    .copyWith(color: FloodingColor.white),
-              ),
+              text: '신청',
               onTap: () {},
             ),
           ],

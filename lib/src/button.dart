@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import '../flooding_app_design_system.dart';
 
 class FloodingDefaultButton extends StatelessWidget {
+  final VoidCallback onTap;
+  final String text;
   final double width;
   final double height;
-  final String text;
-  final VoidCallback onTap;
+  final EdgeInsetsGeometry padding;
   final Color color;
   final BorderRadius borderRadius;
   final TextStyle textStyle;
@@ -13,10 +14,13 @@ class FloodingDefaultButton extends StatelessWidget {
 
   const FloodingDefaultButton({
     super.key,
-    required this.width,
-    required this.height,
-    required this.text,
     required this.onTap,
+    required this.text,
+    this.width = double.infinity,
+    this.height = 0,
+    this.padding = const EdgeInsets.symmetric(
+      vertical: 16,
+    ),
     this.color = FloodingColor.main600,
     this.borderRadius = const BorderRadius.all(
       Radius.circular(8),
@@ -30,6 +34,7 @@ class FloodingDefaultButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        padding: padding,
         alignment: Alignment.center,
         width: width,
         height: height,

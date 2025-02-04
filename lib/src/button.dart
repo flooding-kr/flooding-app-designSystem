@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../flooding_app_design_system.dart';
 
-class FloodingButton extends StatelessWidget {
+class FloodingDefaultButton extends StatelessWidget {
   final double width;
   final double height;
   final String text;
@@ -11,7 +11,7 @@ class FloodingButton extends StatelessWidget {
   final TextStyle textStyle;
   final Color textColor;
 
-  const FloodingButton({
+  const FloodingDefaultButton({
     super.key,
     required this.width,
     required this.height,

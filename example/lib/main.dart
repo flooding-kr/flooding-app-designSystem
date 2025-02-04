@@ -78,8 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FloodingDefaultButton(
-            width: double.infinity,
-            height: 61,
             text: '신청',
             onTap: () {},
           ),

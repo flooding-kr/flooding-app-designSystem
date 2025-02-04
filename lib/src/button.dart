@@ -5,7 +5,6 @@ class FloodingDefaultButton extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
   final double width;
-  final double height;
   final EdgeInsetsGeometry padding;
   final Color color;
   final BorderRadius borderRadius;
@@ -17,7 +16,6 @@ class FloodingDefaultButton extends StatelessWidget {
     required this.onTap,
     required this.text,
     this.width = double.infinity,
-    this.height = 0,
     this.padding = const EdgeInsets.symmetric(
       vertical: 16,
     ),
@@ -37,7 +35,6 @@ class FloodingDefaultButton extends StatelessWidget {
         padding: padding,
         alignment: Alignment.center,
         width: width,
-        height: height,
         decoration: BoxDecoration(
           color: color,
           borderRadius: borderRadius,

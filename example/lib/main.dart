@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FloodingButton(
+            FloodingDefaultButton(
               width: 898,
               height: 61,
               text: '신청',

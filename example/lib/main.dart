@@ -84,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 text: '신청',
                 onTap: () {},
               ),
+              SignUpDropdown()
             ],
           ),
         ),

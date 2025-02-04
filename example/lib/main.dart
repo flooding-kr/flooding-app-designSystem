@@ -74,18 +74,16 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FloodingDefaultButton(
-              width: 898,
-              height: 61,
-              text: '신청',
-              onTap: () {},
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloodingDefaultButton(
+            width: double.infinity,
+            height: 61,
+            text: '신청',
+            onTap: () {},
+          ),
+        ],
       ),
     );
   }

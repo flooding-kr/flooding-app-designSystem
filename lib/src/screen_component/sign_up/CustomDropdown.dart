@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../flooding_app_design_system.dart';
+
 class SignUpDropdown extends StatefulWidget {
   const SignUpDropdown({super.key});
 
@@ -12,6 +14,12 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
   String _selectedCity = '서울'; // 기본 선택값
   OverlayEntry? _overlayEntry;
   final LayerLink _layerLink = LayerLink();
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedCity = widget.defaultCity;
+  }
 
   void _toggleDropdown() {
     if (_overlayEntry == null) {
@@ -40,7 +48,6 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
       builder: (context) {
         return Stack(
           children: [
-            // 드롭다운 외부 클릭 시 닫힘
             Positioned.fill(
               child: GestureDetector(
                 onTap: _hideDropdown,
@@ -94,15 +101,17 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: FloodingColor.white,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.grey),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(_selectedCity, style: TextStyle(fontSize: 16)),
-              const SizedBox(width: 8),
+              Text(
+                '_selectedCity',
+                style: FloodingTypography.body3Regular
+                    .copyWith(color: FloodingColor.gray500),
+              ),
               const Icon(Icons.arrow_drop_down),
             ],
           ),

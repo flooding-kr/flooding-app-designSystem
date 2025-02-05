@@ -3,15 +3,21 @@ import 'package:flutter/material.dart';
 import '../../../flooding_app_design_system.dart';
 
 class SignUpDropdown extends StatefulWidget {
-  const SignUpDropdown({super.key});
+  final List<String> cities; // 리스트 입력
+  final String defaultCity; // 기본값 입력
+
+  const SignUpDropdown({
+    super.key,
+    required this.cities,
+    required this.defaultCity,
+  });
 
   @override
   State<SignUpDropdown> createState() => _SignUpDropdownState();
 }
 
 class _SignUpDropdownState extends State<SignUpDropdown> {
-  final List<String> _cities = ['서울', '대전', '대구', '부산', '인천', '울산', '광주'];
-  String _selectedCity = '서울'; // 기본 선택값
+  late String _selectedCity;
   OverlayEntry? _overlayEntry;
   final LayerLink _layerLink = LayerLink();
 
@@ -67,7 +73,7 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
                   borderRadius: BorderRadius.circular(8),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: _cities.map((city) {
+                    children: widget.cities.map((city) {
                       return InkWell(
                         onTap: () {
                           setState(() {

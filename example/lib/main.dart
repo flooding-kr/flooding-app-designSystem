@@ -64,6 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    final _formKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -77,15 +80,23 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FloodingDefaultButton(
-                text: '신청',
-                onTap: () {},
-              ),
-              SignUpDropdown()
-            ],
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloodingDefaultButton(
+                  text: '신청',
+                  onTap: () {},
+                ),
+                SignUpDropdown(),
+                FloodingEmailTextField(
+                  key: ValueKey(1),
+                  controller: TextEditingController(),
+                  hintText: '이메일을 입력해주세요',
+                )
+              ],
+            ),
           ),
         ),
       ),

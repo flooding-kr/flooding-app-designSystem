@@ -83,18 +83,32 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Form(
             key: _formKey,
             child: Column(
+              spacing: 10,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FloodingDefaultButton(
                   text: '신청',
                   onTap: () {},
                 ),
-                FloodingEmailTextField(
-                  key: ValueKey(1),
-                  controller: TextEditingController(),
-                  hintText: '이메일을 입력해주세요',
-                  textFieldState: FloodingTextFieldState.email,
-                )
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.email,
+                    controller: TextEditingController(),
+                    hintText: '이메일을 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.password,
+                    controller: TextEditingController(),
+                    hintText: '비밀번호를 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.search,
+                    controller: TextEditingController(),
+                    onEditingComplete: () {
+                      print('아하 이걸 검색하셨노 이기야');
+                    },
+                    hintText: '검색할 학생을 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.basic,
+                    controller: TextEditingController(),
+                    hintText: '아무거나')
               ],
             ),
           ),

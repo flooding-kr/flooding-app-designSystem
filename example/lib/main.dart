@@ -84,7 +84,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 text: '신청',
                 onTap: () {},
               ),
-              SignUpDropdown()
+              SignUpDropdown(
+                cities: ['서울', '광주'],
+                defaultCity: '광주',
+              )
             ],
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../flooding_app_design_system.dart';
 class FloodingIcon {
   static const String _iconPath = 'assets/image/';

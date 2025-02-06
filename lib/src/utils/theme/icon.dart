@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../flooding_app_design_system.dart';
+
 class FloodingIcon {
-  static const String _iconPath = 'assets/image/';
+  static const String _iconPath =
+      'packages/flooding_app_design_system/assets/image/';
 
   static Widget account({
     Color color = FloodingColor.black,

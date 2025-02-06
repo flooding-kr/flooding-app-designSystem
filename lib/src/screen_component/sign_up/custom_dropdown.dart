@@ -17,14 +17,12 @@ class SignUpDropdown extends StatefulWidget {
 }
 
 class _SignUpDropdownState extends State<SignUpDropdown> {
-  late String _selectedCity;
   OverlayEntry? _overlayEntry;
   final LayerLink _layerLink = LayerLink();
 
   @override
   void initState() {
     super.initState();
-    _selectedCity = widget.defaultCity;
   }
 
   void _toggleDropdown() {
@@ -77,7 +75,6 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
                       return InkWell(
                         onTap: () {
                           setState(() {
-                            _selectedCity = city;
                           });
                           _hideDropdown();
                         },

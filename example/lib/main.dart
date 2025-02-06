@@ -89,11 +89,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   text: '신청',
                   onTap: () {},
                 ),
-                SignUpDropdown(),
                 FloodingEmailTextField(
                   key: ValueKey(1),
                   controller: TextEditingController(),
                   hintText: '이메일을 입력해주세요',
+                  textFieldState: FloodingTextFieldState.email,
                 )
               ],
             ),

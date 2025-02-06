@@ -64,6 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    final formKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -77,18 +80,35 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FloodingDefaultButton(
-                text: '신청',
-                onTap: () {},
-              ),
-              SignUpDropdown(
-                cities: ['서울', '광주'],
-                defaultCity: '광주',
-              )
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              spacing: 10,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloodingDefaultButton(
+                  text: '신청',
+                  onTap: () {},
+                ),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.email,
+                    controller: TextEditingController(),
+                    hintText: '이메일을 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.password,
+                    controller: TextEditingController(),
+                    hintText: '비밀번호를 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.search,
+                    controller: TextEditingController(),
+                    onEditingComplete: () {},
+                    hintText: '검색할 학생을 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.basic,
+                    controller: TextEditingController(),
+                    hintText: '아무거나')
+              ],
+            ),
           ),
         ),
       ),

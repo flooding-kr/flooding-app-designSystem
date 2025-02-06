@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../flooding_app_design_system.dart';
+
 class FloodingIcon {
-  static const String _iconPath = 'assets/image/';
+  static const String _iconPath =
+      'packages/flooding_app_design_system/assets/image/';
 
   static Widget account({
     Color color = FloodingColor.black,
@@ -583,6 +585,19 @@ class FloodingIcon {
   }) {
     return SvgPicture.asset(
       '${_iconPath}write.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
+  static Widget logo({
+    Color color = FloodingColor.main600,
+    double width = 226,
+    double height = 86,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}logo.svg',
       colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
       width: width,
       height: height,

@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
 
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
 
     return Scaffold(
       appBar: AppBar(
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               spacing: 10,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -101,9 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 FloodingTextField(
                     textFieldState: FloodingTextFieldState.search,
                     controller: TextEditingController(),
-                    onEditingComplete: () {
-                      print('아하 이걸 검색하셨노 이기야');
-                    },
+                    onEditingComplete: () {},
                     hintText: '검색할 학생을 입력해주세요'),
                 FloodingTextField(
                     textFieldState: FloodingTextFieldState.basic,

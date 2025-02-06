@@ -590,4 +590,17 @@ class FloodingIcon {
       height: height,
     );
   }
+
+  static Widget logo({
+    Color color = FloodingColor.main600,
+    double width = 226,
+    double height = 86,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}logo.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
 }

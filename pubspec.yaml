@@ -10,14 +10,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
 
-
 flutter:
+  assets:
+    - assets/image/
+
   fonts:
     - family: Pretendard
       fonts:
@@ -39,4 +42,3 @@ flutter:
           weight: 600
         - asset: assets/fonts/pretendard_thin.otf
           weight: 100
-

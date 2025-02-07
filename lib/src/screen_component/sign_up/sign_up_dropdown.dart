@@ -69,22 +69,46 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
                 child: Material(
                   elevation: 4,
                   borderRadius: BorderRadius.circular(8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: widget.cities.map((city) {
-                      return InkWell(
-                        onTap: () {
-                          setState(() {
-                          });
-                          _hideDropdown();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 16),
-                          child: Text(city, style: TextStyle(fontSize: 16)),
-                        ),
-                      );
-                    }).toList(),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        for (int i = 0; i < widget.showList.length; i++) ...[
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                _selectedItem = widget.showList[i];
+                              });
+                              widget.onTap(_selectedItem);
+                              _hideDropdown();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 16),
+                              child: Text(
+                                widget.showList[i],
+                                style:
+                                    FloodingTypography.body2SemiBold.copyWith(
+                                  color: widget.showList[i] == _selectedItem
+                                      ? FloodingColor.black
+                                      : FloodingColor.gray500,
+                                ),
+                              ),
+                            ),
+                          ),
+                          if (i < widget.showList.length - 1) ...[
+                            const SizedBox(height: 20),
+                            Container(
+                              height: 1,
+                              width: 30,
+                              color: FloodingColor.gray200,
+                            ),
+                            const SizedBox(height: 20),
+                          ],
+                        ],
+                      ],
+                    ),
                   ),
                 ),
               ),

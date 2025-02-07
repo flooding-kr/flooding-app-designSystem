@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-
 import '../../../flooding_app_design_system.dart';
 
 class SignUpDropdown extends StatefulWidget {
-  final List<String> cities; // 리스트 입력
-  final String defaultCity; // 기본값 입력
+  final Function(String) onTap;
+  final double width;
+  final List<String> showList;
+  final String defaultValue;
 
   const SignUpDropdown({
     super.key,
-    required this.cities,
-    required this.defaultCity,
+    required this.onTap,
+    required this.showList,
+    required this.defaultValue,
+    this.width = double.infinity,
   });
 
   @override
@@ -19,10 +22,12 @@ class SignUpDropdown extends StatefulWidget {
 class _SignUpDropdownState extends State<SignUpDropdown> {
   OverlayEntry? _overlayEntry;
   final LayerLink _layerLink = LayerLink();
+  late String _selectedItem;
 
   @override
   void initState() {
     super.initState();
+    _selectedItem = widget.defaultValue;
   }
 
   void _toggleDropdown() {
@@ -135,11 +140,11 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                '_selectedCity',
+                _selectedItem,
                 style: FloodingTypography.body3Regular
                     .copyWith(color: FloodingColor.gray500),
               ),
-              const Icon(Icons.arrow_drop_down),
+              const FloodingIcon.arrowDown(),
             ],
           ),
         ),

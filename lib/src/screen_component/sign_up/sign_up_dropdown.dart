@@ -144,7 +144,7 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
                 style: FloodingTypography.body3Regular
                     .copyWith(color: FloodingColor.gray500),
               ),
-              const FloodingIcon.arrowDown(),
+              FloodingIcon.arrowDown(),
             ],
           ),
         ),

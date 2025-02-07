@@ -31,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,46 +43,42 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FloodingDefaultButton(
-                text: '신청',
-                onTap: () {},
-              ),
-              SignUpDropdown(
-                onTap: (it) {},
-                showList: ['1기', '2기'],
-                defaultValue: '기수',
-              )
-            ],
           child: Form(
             key: formKey,
             child: Column(
               spacing: 10,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SignUpDropdown(
+                  onTap: (it) {},
+                  showList: ['1기', '2기'],
+                  defaultValue: '기수',
+                ),
                 FloodingDefaultButton(
                   text: '신청',
                   onTap: () {},
                 ),
                 FloodingTextField(
-                    textFieldState: FloodingTextFieldState.email,
-                    controller: TextEditingController(),
-                    hintText: '이메일을 입력해주세요'),
+                  textFieldState: FloodingTextFieldState.email,
+                  controller: TextEditingController(),
+                  hintText: '이메일을 입력해주세요',
+                ),
                 FloodingTextField(
-                    textFieldState: FloodingTextFieldState.password,
-                    controller: TextEditingController(),
-                    hintText: '비밀번호를 입력해주세요'),
+                  textFieldState: FloodingTextFieldState.password,
+                  controller: TextEditingController(),
+                  hintText: '비밀번호를 입력해주세요',
+                ),
                 FloodingTextField(
-                    textFieldState: FloodingTextFieldState.search,
-                    controller: TextEditingController(),
-                    onEditingComplete: () {},
-                    hintText: '검색할 학생을 입력해주세요'),
+                  textFieldState: FloodingTextFieldState.search,
+                  controller: TextEditingController(),
+                  onEditingComplete: () {},
+                  hintText: '검색할 학생을 입력해주세요',
+                ),
                 FloodingTextField(
-                    textFieldState: FloodingTextFieldState.basic,
-                    controller: TextEditingController(),
-                    hintText: '아무거나')
+                  textFieldState: FloodingTextFieldState.basic,
+                  controller: TextEditingController(),
+                  hintText: '아무거나',
+                ),
               ],
             ),
           ),

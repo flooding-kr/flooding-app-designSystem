@@ -54,6 +54,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 defaultValue: '기수',
               )
             ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              spacing: 10,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloodingDefaultButton(
+                  text: '신청',
+                  onTap: () {},
+                ),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.email,
+                    controller: TextEditingController(),
+                    hintText: '이메일을 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.password,
+                    controller: TextEditingController(),
+                    hintText: '비밀번호를 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.search,
+                    controller: TextEditingController(),
+                    onEditingComplete: () {},
+                    hintText: '검색할 학생을 입력해주세요'),
+                FloodingTextField(
+                    textFieldState: FloodingTextFieldState.basic,
+                    controller: TextEditingController(),
+                    hintText: '아무거나')
+              ],
+            ),
           ),
         ),
       ),

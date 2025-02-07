@@ -49,8 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {},
               ),
               SignUpDropdown(
-                cities: ['서울', '광주'],
-                defaultCity: '광주',
+                onTap: (it) {},
+                showList: ['1기', '2기'],
+                defaultValue: '기수',
               )
             ],
           ),

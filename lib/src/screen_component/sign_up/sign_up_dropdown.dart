@@ -23,11 +23,13 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
   OverlayEntry? _overlayEntry;
   final LayerLink _layerLink = LayerLink();
   late String _selectedItem;
+  late String _defaultValue;
 
   @override
   void initState() {
     super.initState();
     _selectedItem = widget.defaultValue;
+    _defaultValue = widget.defaultValue;
   }
 
   void _toggleDropdown() {
@@ -141,7 +143,10 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
             children: [
               Text(
                 _selectedItem,
-                style: FloodingTypography.body3Regular,
+                style: _selectedItem == _defaultValue
+                    ? FloodingTypography.body3Regular
+                        .copyWith(color: FloodingColor.gray500)
+                    : FloodingTypography.body3Regular,
               ),
               FloodingIcon.arrowDown(),
             ],

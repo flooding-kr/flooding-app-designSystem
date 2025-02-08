@@ -141,8 +141,7 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
             children: [
               Text(
                 _selectedItem,
-                style: FloodingTypography.body3Regular
-                    .copyWith(color: FloodingColor.gray500),
+                style: FloodingTypography.body3Regular,
               ),
               FloodingIcon.arrowDown(),
             ],

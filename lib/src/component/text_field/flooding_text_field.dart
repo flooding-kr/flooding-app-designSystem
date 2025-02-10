@@ -54,7 +54,7 @@ class FloodingTextField extends StatefulWidget {
     this.errorStyle = FloodingTypography.caption2Medium,
     this.errorColor = FloodingColor.error,
     this.errorBorderSide =
-    const BorderSide(color: FloodingColor.error, width: 1),
+        const BorderSide(color: FloodingColor.error, width: 1),
     this.searchIconPadding = const EdgeInsets.symmetric(
       horizontal: 28,
       vertical: 12,
@@ -62,7 +62,7 @@ class FloodingTextField extends StatefulWidget {
     this.searchIconSize = 36,
     this.searchIconColor = FloodingColor.gray700,
     this.passwordIconPadding =
-    const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+        const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
     this.passwordIconSize = 24,
     this.passwordOffIconColor = FloodingColor.gray500,
     this.passwordOnIconColor = FloodingColor.black,
@@ -129,37 +129,37 @@ class _FloodingTextFieldState extends State<FloodingTextField> {
       decoration: InputDecoration(
         suffixIcon: widget.textFieldState == FloodingTextFieldState.search
             ? GestureDetector(
-          onTap: widget.onEditingComplete,
-          child: Padding(
-            padding: widget.searchIconPadding,
-            child: FloodingIcon.search(
-              color: widget.searchIconColor,
-              height: widget.searchIconSize,
-              width: widget.searchIconSize,
-            ),
-          ),
-        )
+                onTap: widget.onEditingComplete,
+                child: Padding(
+                  padding: widget.searchIconPadding,
+                  child: FloodingIcon.search(
+                    color: widget.searchIconColor,
+                    height: widget.searchIconSize,
+                    width: widget.searchIconSize,
+                  ),
+                ),
+              )
             : widget.textFieldState == FloodingTextFieldState.password
-            ? GestureDetector(
-          onTap: () => setState(() {
-            _isObscureText = !_isObscureText;
-          }),
-          child: Padding(
-            padding: widget.passwordIconPadding,
-            child: _isObscureText
-                ? FloodingIcon.eyeClose(
-              color: widget.passwordOffIconColor,
-              height: widget.passwordIconSize,
-              width: widget.passwordIconSize,
-            )
-                : FloodingIcon.eyeOpen(
-              color: widget.passwordOnIconColor,
-              height: widget.passwordIconSize,
-              width: widget.passwordIconSize,
-            ),
-          ),
-        )
-            : null,
+                ? GestureDetector(
+                    onTap: () => setState(() {
+                      _isObscureText = !_isObscureText;
+                    }),
+                    child: Padding(
+                      padding: widget.passwordIconPadding,
+                      child: _isObscureText
+                          ? FloodingIcon.eyeClose(
+                              color: widget.passwordOffIconColor,
+                              height: widget.passwordIconSize,
+                              width: widget.passwordIconSize,
+                            )
+                          : FloodingIcon.eyeOpen(
+                              color: widget.passwordOnIconColor,
+                              height: widget.passwordIconSize,
+                              width: widget.passwordIconSize,
+                            ),
+                    ),
+                  )
+                : null,
         filled: true,
         fillColor: widget.backgroundColor,
         contentPadding: widget.contentPadding,

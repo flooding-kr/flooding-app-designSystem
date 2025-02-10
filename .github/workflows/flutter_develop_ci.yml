@@ -42,7 +42,8 @@ jobs:
       - name: Set timestamp
         id: timestamp
         run: echo "TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
-        
+
+      ## ✅ 성공 알림 (Push)
       - name: Notify Success for Push
         if: github.event_name == 'push' && success()
         env:
@@ -50,50 +51,41 @@ jobs:
           SUCCESS_FLUTTER_IMAGE: ${{ secrets.SUCCESS_FLUTTER_IMAGE }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          DATA=$(cat <<EOF
-          {
-            "content": "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>", 
-            "embeds": [
-              {
-                "title": "CI 성공 :)",
-                "description": "** COMMIT MESSAGE **\n> [${{ github.event.head_commit.message }}](${{ github.event.head_commit.url }})\n",
-                "color": 46335,
-                "timestamp": "${{ env.TIMESTAMP }}",
-                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-                "author": {
-                  "name": "${{ github.event.sender.login }}",
-                  "url": "${{ github.event.sender.html_url }}",
-                  "icon_url": "${{ github.event.sender.avatar_url }}"
-                },
-                "thumbnail": {
-                  "url": "${{ github.event.sender.avatar_url }}"
-                },
-                "image": {
-                  "url": "${{ secrets.SUCCESS_FLUTTER_IMAGE }}"
-                },
-                "fields": [
-                  {
-                    "name": "Repository",
-                    "value": "> [${{ github.repository }}](https://github.com/${{ github.repository }})\n"
-                  },
-                  {
-                    "name": "Branch",
-                    "value": "> [${{ github.ref }}](https://github.com/${{ github.repository }}/tree/${{ github.ref_name }})",
-                    "inline": false
-                  },
-                  {
-                    "name": "Workflow",
-                    "value": "> [CI](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
-                    "inline": false
-                  }
-                ]
-              }
-            ]
-          }
-          EOF
-          )
+          DATA=$(jq -n --arg content "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>" \
+            --arg title "CI 성공 :)" \
+            --arg desc "** COMMIT MESSAGE **\n> [${{ github.event.head_commit.message }}](${{ github.event.head_commit.url }})\n" \
+            --arg timestamp "${{ env.TIMESTAMP }}" \
+            --arg url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --arg author_name "${{ github.event.sender.login }}" \
+            --arg author_url "${{ github.event.sender.html_url }}" \
+            --arg image_url "${{ secrets.SUCCESS_FLUTTER_IMAGE }}" \
+            --arg repo "> [${{ github.repository }}](https://github.com/${{ github.repository }})\n" \
+            --arg branch "> [${{ github.ref }}](https://github.com/${{ github.repository }}/tree/${{ github.ref_name }})" \
+            --arg workflow "> [CI](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
+            '{
+              "content": $content,
+              "embeds": [
+                {
+                  "title": $title,
+                  "description": $desc,
+                  "color": 46335,
+                  "timestamp": $timestamp,
+                  "url": $url,
+                  "author": { "name": $author_name, "url": $author_url },
+                  "image": { "url": $image_url },
+                  "fields": [
+                    { "name": "Repository", "value": $repo },
+                    { "name": "Branch", "value": $branch, "inline": false },
+                    { "name": "Workflow", "value": $workflow, "inline": false }
+                  ]
+                }
+              ]
+            }')
+
+          echo "Generated JSON: $DATA"  # Debugging
           curl -X POST -H 'Content-type:application/json' -d "$DATA" "${{ secrets.DISCORD_WEBHOOK_URL }}"
 
+      ## ✅ 성공 알림 (Pull Request)
       - name: Notify Success for PR
         if: github.event_name == 'pull_request' && success()
         env:
@@ -101,49 +93,41 @@ jobs:
           SUCCESS_FLUTTER_IMAGE: ${{ secrets.SUCCESS_FLUTTER_IMAGE }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          DATA=$(cat <<EOF
-          {
-           "content": "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>", 
-            "embeds": [
-              {
-                "title": "CI 성공 :)",
-                "description": "** Pull Request **\n> [${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }})\n",
-                "color": 46335,
-                "timestamp": "${{ env.TIMESTAMP }}",
-                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-                "author": {
-                  "name": "${{ github.event.sender.login }}",
-                  "url": "${{ github.event.sender.html_url }}"
-                },
-                "thumbnail": {
-                  "url": "${{ github.event.sender.avatar_url }}"
-                },
-                "image": {
-                  "url": "${{ secrets.SUCCESS_FLUTTER_IMAGE }}"
-                },
-                "fields": [
-                  {
-                    "name": "Repository",
-                    "value": "> [${{ github.repository }}](https://github.com/${{ github.repository }})\n"
-                  },
-                  {
-                    "name": "Branch",
-                    "value": "> [${{ github.ref }}](https://github.com/${{ github.repository }}/tree/${{ github.ref_name }})",
-                    "inline": false
-                  },
-                  {
-                    "name": "Workflow",
-                    "value": "> [CI](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
-                    "inline": false
-                  }
-                ]
-              }
-            ]
-          }
-          EOF
-          )
+          DATA=$(jq -n --arg content "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>" \
+            --arg title "CI 성공 :)" \
+            --arg desc "** Pull Request **\n> [${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }})\n" \
+            --arg timestamp "${{ env.TIMESTAMP }}" \
+            --arg url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --arg author_name "${{ github.event.sender.login }}" \
+            --arg author_url "${{ github.event.sender.html_url }}" \
+            --arg image_url "${{ secrets.SUCCESS_FLUTTER_IMAGE }}" \
+            --arg repo "> [${{ github.repository }}](https://github.com/${{ github.repository }})\n" \
+            --arg branch "> [${{ github.ref }}](https://github.com/${{ github.repository }}/tree/${{ github.ref_name }})" \
+            --arg workflow "> [CI](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})" \
+            '{
+              "content": $content,
+              "embeds": [
+                {
+                  "title": $title,
+                  "description": $desc,
+                  "color": 46335,
+                  "timestamp": $timestamp,
+                  "url": $url,
+                  "author": { "name": $author_name, "url": $author_url },
+                  "image": { "url": $image_url },
+                  "fields": [
+                    { "name": "Repository", "value": $repo },
+                    { "name": "Branch", "value": $branch, "inline": false },
+                    { "name": "Workflow", "value": $workflow, "inline": false }
+                  ]
+                }
+              ]
+            }')
+
+          echo "Generated JSON: $DATA"  # Debugging
           curl -X POST -H 'Content-type:application/json' -d "$DATA" "${{ secrets.DISCORD_WEBHOOK_URL }}"
 
+      ## ❌ 실패 알림
       - name: Notify Failure
         if: failure()
         env:
@@ -151,53 +135,34 @@ jobs:
           FAIL_FLUTTER_IMAGE: ${{ secrets.FAIL_FLUTTER_IMAGE }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          DATA=$(cat <<EOF
-          {
-            "content": "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>", 
-            "embeds": [
-              {
-                "title": "CI 실패 :(",
-                "description": "** ${{
-                  github.event_name == 'push' 
-                  && 'COMMIT MESSAGE' || 'Pull Request' }} **\n> [${{ 
-                  github.event_name == 'push' 
-                  && github.event.head_commit.message || 
-                  github.event.pull_request.title }}](${{ 
-                  github.event_name == 'push' 
-                  && github.event.head_commit.url || 
-                  github.event.pull_request.html_url }})\n",
-                "color": 16711680,
-                "timestamp": "${{ env.TIMESTAMP }}",
-                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-                "author": {
-                  "name": "${{ github.event.sender.login }}",
-                  "url": "${{ github.event.sender.html_url }}"
-                },
-                "thumbnail": {
-                  "url": "${{ github.event.sender.avatar_url }}"
-                },
-                "image": {
-                  "url": "${{ secrets.FAIL_FLUTTER_IMAGE }}"
-                },
-                "fields": [
-                  {
-                    "name": "Repository",
-                    "value": "> [${{ github.repository }}](https://github.com/${{ github.repository }})\n"
-                  },
-                  {
-                    "name": "Branch",
-                    "value": "> [${{ github.ref }}](https://github.com/${{ github.repository }}/tree/${{ github.ref_name }})",
-                    "inline": false
-                  },
-                  {
-                    "name": "Workflow",
-                    "value": "> [CI](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
-                    "inline": false
-                  }
-                ]
-              }
-            ]
-          }
-          EOF
-          )
+          DATA=$(jq -n --arg content "<@749992025985777755>, <@1042669793481871361>, <@930099449307467786>" \
+            --arg title "CI 실패 :(" \
+            --arg desc "** ${{
+              github.event_name == 'push' && 'COMMIT MESSAGE' || 'Pull Request' 
+            }} **\n> [${{ 
+              github.event_name == 'push' && github.event.head_commit.message || github.event.pull_request.title 
+            }}](${{ 
+              github.event_name == 'push' && github.event.head_commit.url || github.event.pull_request.html_url 
+            }})\n" \
+            --arg timestamp "${{ env.TIMESTAMP }}" \
+            --arg url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --arg author_name "${{ github.event.sender.login }}" \
+            --arg author_url "${{ github.event.sender.html_url }}" \
+            --arg image_url "${{ secrets.FAIL_FLUTTER_IMAGE }}" \
+            '{
+              "content": $content,
+              "embeds": [
+                {
+                  "title": $title,
+                  "description": $desc,
+                  "color": 16711680,
+                  "timestamp": $timestamp,
+                  "url": $url,
+                  "author": { "name": $author_name, "url": $author_url },
+                  "image": { "url": $image_url }
+                }
+              ]
+            }')
+
+          echo "Generated JSON: $DATA"  # Debugging
           curl -X POST -H 'Content-type:application/json' -d "$DATA" "${{ secrets.DISCORD_WEBHOOK_URL }}"

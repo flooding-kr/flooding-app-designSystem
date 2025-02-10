@@ -49,10 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
               spacing: 10,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SignUpDropdown(
+                FloodingDropdownButton(
                   onTap: (it) {},
                   showList: ['1기', '2기'],
                   defaultValue: '기수',
+                  width: 101,
                 ),
                 FloodingDefaultButton(
                   text: '신청',

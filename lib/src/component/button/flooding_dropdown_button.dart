@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../flooding_app_design_system.dart';
 
-class SignUpDropdown extends StatefulWidget {
+import '../../../../flooding_app_design_system.dart';
+
+class FloodingDropdownButton extends StatefulWidget {
   final Function(String) onTap;
   final double width;
   final List<String> showList;
   final String defaultValue;
 
-  const SignUpDropdown({
+  const FloodingDropdownButton({
     super.key,
     required this.onTap,
     required this.showList,
@@ -16,20 +17,18 @@ class SignUpDropdown extends StatefulWidget {
   });
 
   @override
-  State<SignUpDropdown> createState() => _SignUpDropdownState();
+  State<FloodingDropdownButton> createState() => _FloodingDropdownButtonState();
 }
 
-class _SignUpDropdownState extends State<SignUpDropdown> {
+class _FloodingDropdownButtonState extends State<FloodingDropdownButton> {
   OverlayEntry? _overlayEntry;
   final LayerLink _layerLink = LayerLink();
   late String _selectedItem;
-  late String _defaultValue;
 
   @override
   void initState() {
     super.initState();
     _selectedItem = widget.defaultValue;
-    _defaultValue = widget.defaultValue;
   }
 
   void _toggleDropdown() {
@@ -143,10 +142,8 @@ class _SignUpDropdownState extends State<SignUpDropdown> {
             children: [
               Text(
                 _selectedItem,
-                style: _selectedItem == _defaultValue
-                    ? FloodingTypography.body3Regular
-                        .copyWith(color: FloodingColor.gray500)
-                    : FloodingTypography.body3Regular,
+                style: FloodingTypography.body3Regular
+                    .copyWith(color: FloodingColor.gray500),
               ),
               FloodingIcon.arrowDown(),
             ],

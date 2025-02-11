@@ -1,3 +1,4 @@
 library;
 
-export 'src/typography.dart';
+export 'src/theme.dart';
+export 'src/component.dart';

@@ -11,7 +11,7 @@ enum FloodingTextFieldState {
 class FloodingTextField extends StatefulWidget {
   final FloodingTextFieldState textFieldState;
   final TextEditingController controller;
-  final String? validator;
+  final String? Function(String?)? validator;
   final Color backgroundColor;
   final BorderRadius borderRadius;
   final TextStyle textStyle;
@@ -114,7 +114,7 @@ class _FloodingTextFieldState extends State<FloodingTextField> {
           return _validatePassword(value);
         } else if (widget.textFieldState == FloodingTextFieldState.basic &&
             widget.validator != null) {
-          return widget.validator;
+          return widget.validator!(value);
         } else {
           return null;
         }

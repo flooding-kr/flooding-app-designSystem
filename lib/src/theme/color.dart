@@ -10,12 +10,12 @@ class FloodingColor {
   static const Color success = Color(0xff1eb916);
 
   // main
-  static const Color main600 = Color(0xff2b55ed);
-  static const Color main500 = Color(0xff4e71f0);
-  static const Color main400 = Color(0xff728ef3);
-  static const Color main300 = Color(0xff95aaf6);
-  static const Color main200 = Color(0xffb8c6f9);
-  static const Color main100 = Color(0xffdce3fc);
+  static const Color main600 = Color(0xff5E7EF3);
+  static const Color main500 = Color(0xff7994F5);
+  static const Color main400 = Color(0xff94A9F7);
+  static const Color main300 = Color(0xffAFBFF9);
+  static const Color main200 = Color(0xffC9D4FB);
+  static const Color main100 = Color(0xffE4EAFD);
 
   // gray
   static const Color gray900 = Color(0xff4e4e4e);

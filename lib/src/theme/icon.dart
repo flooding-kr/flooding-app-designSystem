@@ -6,19 +6,6 @@ class FloodingIcon {
   static const String _iconPath =
       'packages/flooding_app_design_system/assets/image/';
 
-  static Widget account({
-    Color color = FloodingColor.black,
-    double width = 24,
-    double height = 24,
-  }) {
-    return SvgPicture.asset(
-      '${_iconPath}account.svg',
-      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-      width: width,
-      height: height,
-    );
-  }
-
   static Widget add({
     Color color = FloodingColor.black,
     double width = 24,
@@ -71,6 +58,19 @@ class FloodingIcon {
     );
   }
 
+  static Widget arrowBack({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}arrow_back.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
   static Widget arrowLeft({
     Color color = FloodingColor.black,
     double width = 24,
@@ -117,6 +117,19 @@ class FloodingIcon {
   }) {
     return SvgPicture.asset(
       '${_iconPath}attendance.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
+  static Widget attendanceFill({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}attendance_fill.svg',
       colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
       width: width,
       height: height,
@@ -214,19 +227,6 @@ class FloodingIcon {
     );
   }
 
-  static Widget chevronDown({
-    Color color = FloodingColor.black,
-    double width = 24,
-    double height = 24,
-  }) {
-    return SvgPicture.asset(
-      '${_iconPath}chevron_down.svg',
-      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-      width: width,
-      height: height,
-    );
-  }
-
   static Widget chair({
     Color color = FloodingColor.black,
     double width = 24,
@@ -279,6 +279,19 @@ class FloodingIcon {
     );
   }
 
+  static Widget clubFill({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}club_fill.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
   static Widget dormitory({
     Color color = FloodingColor.black,
     double width = 24,
@@ -286,6 +299,19 @@ class FloodingIcon {
   }) {
     return SvgPicture.asset(
       '${_iconPath}dormitory.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
+  static Widget dormitoryFill({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}dormitory_fill.svg',
       colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
       width: width,
       height: height,
@@ -435,6 +461,19 @@ class FloodingIcon {
     );
   }
 
+  static Widget homebaseFill({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}homebase_fill.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
   static Widget logout({
     Color color = FloodingColor.black,
     double width = 24,
@@ -455,6 +494,19 @@ class FloodingIcon {
   }) {
     return SvgPicture.asset(
       '${_iconPath}manager.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
+  static Widget managerFill({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}manager_fill.svg',
       colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
       width: width,
       height: height,
@@ -494,19 +546,6 @@ class FloodingIcon {
   }) {
     return SvgPicture.asset(
       '${_iconPath}recommend_outline.svg',
-      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-      width: width,
-      height: height,
-    );
-  }
-
-  static Widget schedule({
-    Color color = FloodingColor.black,
-    double width = 24,
-    double height = 24,
-  }) {
-    return SvgPicture.asset(
-      '${_iconPath}schedule.svg',
       colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
       width: width,
       height: height,
@@ -590,6 +629,59 @@ class FloodingIcon {
       height: height,
     );
   }
+
+  static Widget featureSearch({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}feature_search.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
+
+  static Widget location({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}location.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
+  static Widget image({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}image.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+  static Widget imageHide({
+    Color color = FloodingColor.black,
+    double width = 24,
+    double height = 24,
+  }) {
+    return SvgPicture.asset(
+      '${_iconPath}image_hide.svg',
+      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+      width: width,
+      height: height,
+    );
+  }
+
 
   static Widget logo({
     Color color = FloodingColor.main600,

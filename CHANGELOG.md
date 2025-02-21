@@ -17,3 +17,10 @@
 * add Textfield
 * add DropDown Button
 * add Icon
+
+# 1.0.0
+* 1.0.0 배포 
+
+# 1.0.1
+* 색상 변경 
+* 아이콘 추가 

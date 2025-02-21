@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
   final String title;
 
   @override
@@ -80,6 +81,153 @@ class _MyHomePageState extends State<MyHomePage> {
                   controller: TextEditingController(),
                   hintText: '아무거나',
                 ),
+                Wrap(
+                  children: [
+                    FloodingIcon.home(),
+                    FloodingIcon.homeOutline(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.genres(),
+                    FloodingIcon.genresOutline(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.filter(),
+                    FloodingIcon.filterOutline(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.recommend(),
+                    FloodingIcon.recommendOutline(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.checkBox(),
+                    FloodingIcon.checkBoxOutline(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.arrowDown(),
+                    FloodingIcon.arrowUp(),
+                    FloodingIcon.arrowLeft(),
+                    FloodingIcon.arrowRight(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.arrowBack(),
+                    FloodingIcon.arrowForward(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.closeSmall(),
+                    FloodingIcon.closeBig(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.add(),
+                    FloodingIcon.check(),
+                    FloodingIcon.error(),
+                    FloodingIcon.help(),
+                    FloodingIcon.study(),
+                    FloodingIcon.search(),
+                    FloodingIcon.time(),
+                    FloodingIcon.send(),
+                    FloodingIcon.trash(),
+                    FloodingIcon.all(),
+                    FloodingIcon.chair(),
+                    FloodingIcon.write(),
+                    FloodingIcon.more(),
+                    FloodingIcon.logout(),
+                    FloodingIcon.featureSearch(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.homebase(),
+                    FloodingIcon.homebaseFill(),
+                    FloodingIcon.club(),
+                    FloodingIcon.clubFill(),
+                    FloodingIcon.manager(),
+                    FloodingIcon.managerFill(),
+                    FloodingIcon.dormitory(),
+                    FloodingIcon.dormitoryFill(),
+                    FloodingIcon.attendance(),
+                    FloodingIcon.attendanceFill(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.eyeClose(),
+                    FloodingIcon.eyeOpen(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.bellDisableOutline(),
+                    FloodingIcon.bellEnableOutline(),
+                    FloodingIcon.bellDisable(),
+                    FloodingIcon.bellEnable(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Wrap(
+                  children: [
+                    FloodingIcon.image(),
+                    FloodingIcon.imageHide(),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                FloodingIcon.location(),
+                SizedBox(
+                  height: 20,
+                ),
+                FloodingIcon.logo(),
               ],
             ),
           ),

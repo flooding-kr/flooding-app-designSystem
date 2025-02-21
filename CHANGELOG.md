@@ -17,3 +17,6 @@
 * add Textfield
 * add DropDown Button
 * add Icon
+
+# 1.0.0
+* 정식 배포

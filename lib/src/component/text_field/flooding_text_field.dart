@@ -95,7 +95,7 @@ class _FloodingTextFieldState extends State<FloodingTextField> {
     if (value.length < 8) {
       return '비밀번호는 최소 8자 이상이어야 합니다.';
     }
-    if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]+$')
+    if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\W]+$')
         .hasMatch(value)) {
       return '영문과 숫자를 포함해야 합니다.';
     }
